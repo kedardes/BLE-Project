@@ -14,7 +14,6 @@ public class DistanceBackgroundView extends android.view.View {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 		drawable = context.getResources().getDrawable(R.drawable.bg_distance);
-		
 	}
 	
 	@Override
