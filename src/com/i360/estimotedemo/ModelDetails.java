@@ -58,23 +58,24 @@ public class ModelDetails extends Activity {
 //		animate.setFillAfter(true);
 //		modelImageView.startAnimation(animate);
 		
-		ObjectAnimator animation1 = ObjectAnimator.ofFloat(modelImageView,
-		          "rotation",dest);
-		      animation1.setDuration(2000);
-		      animation1.start();
+//		ObjectAnimator animation1 = ObjectAnimator.ofFloat(modelImageView,
+//		          "rotation",dest);
+//		      animation1.setDuration(2000);
+//		      animation1.start();
 		      
-//	      ObjectAnimator fadeOut = ObjectAnimator.ofFloat(modelImageView, "rotate",0,360);
-//	          fadeOut.setDuration(2000);
-//	          ObjectAnimator mover = ObjectAnimator.ofFloat(modelImageView,
-//	              "translationX", -500f, 0f);
-//	          mover.setDuration(2000);
-//	          ObjectAnimator fadeIn = ObjectAnimator.ofFloat(modelImageView, "alpha",
-//	              0f, 1f);
-//	          fadeIn.setDuration(2000);
-//	          AnimatorSet animatorSet = new AnimatorSet();
-//
-//	          animatorSet.play(mover).with(fadeIn).after(fadeOut);
-//	          animatorSet.start();
+	    //  ObjectAnimator fadeOut = ObjectAnimator.ofFloat(modelImageView, "alpha",0f);
+	    //      fadeOut.setDuration(2000);
+		
+	          ObjectAnimator mover = ObjectAnimator.ofFloat(modelImageView,
+	              "translationX", -500f, 0f);
+	          mover.setDuration(2000);
+	          ObjectAnimator fadeIn = ObjectAnimator.ofFloat(modelImageView, "alpha",
+	              0f, 1f);
+	          fadeIn.setDuration(2000);
+	          AnimatorSet animatorSet = new AnimatorSet();
+
+	          animatorSet.play(mover).with(fadeIn); //.after(fadeOut);
+	          animatorSet.start();
 		      
 	}
 
