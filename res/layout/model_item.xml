@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:orientation="horizontal" >
+   
+    <ImageView 
+        android:tag="modelimage"
+    	android:layout_width="100dp"
+    	android:layout_height="80dp"
+    	android:layout_gravity="center"
+    	android:layout_marginRight="10dp"
+    	android:padding="5dp"
+    	android:src="@drawable/beacon_gray"></ImageView>
+            
+     <LinearLayout android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:padding="5dp"
+         android:orientation="vertical">
+         
+         <TextView 
+             android:tag="modelname"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:padding="5dp"
+             android:layout_gravity="center_horizontal"
+             ></TextView>
+         
+         <TextView 
+             android:tag="modelyear"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:padding="5dp"
+             android:layout_gravity="center_horizontal"
+             ></TextView>
+         
+         <TextView 
+             android:tag="modelprice"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:padding="5dp"
+             android:layout_gravity="center_horizontal"
+             ></TextView>        
+         </LinearLayout>
+</LinearLayout>

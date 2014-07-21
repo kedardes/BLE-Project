@@ -3,8 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
-    
-    
+   
     <ImageView 
     	android:layout_width="60dp"
     	android:layout_height="80dp"
@@ -49,6 +48,42 @@
          
          <TextView 
              android:tag="rssi"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             ></TextView>
+         
+         <TextView 
+             android:tag="modelimage"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             ></TextView>
+         
+         <TextView 
+             android:tag="modelname"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             ></TextView>
+         
+         <TextView 
+             android:tag="modelyear"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             ></TextView>
+         
+         <TextView 
+             android:tag="modelprice"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             ></TextView>
+         
+         <TextView 
+             android:tag="modellocation"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             ></TextView>
+         
+         <TextView 
+             android:tag="targeturl"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              ></TextView>

@@ -33,33 +33,131 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Beaocns minor:"
-                ></TextView>
+                android:text="Beacons minor:"></TextView>
             
+            <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+	             <EditText
+	                     android:id="@+id/minor"
+	                     android:layout_width="0dp"
+	                     android:layout_weight="1"
+	                     android:layout_height="wrap_content"
+	                     android:text="123"></EditText>
+             </LinearLayout>
+             
+             
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Model Image:"></TextView>
+             
              <LinearLayout
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
-                 android:orientation="horizontal"
-                 >
-                 
-                 <EditText
-                     android:id="@+id/minor"
+                 android:orientation="horizontal">
+             <EditText
+                     android:id="@+id/modelimage"
                      android:layout_width="0dp"
                      android:layout_weight="1"
                      android:layout_height="wrap_content"
-                     android:text="123"
-                     ></EditText>
-                 
-                 <Button 
-                     android:id="@+id/update"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="update"
-                     />
+                     android:text="modelImage"></EditText>
+             </LinearLayout>
+              
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Model Name:"></TextView>
+            
+            <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+	             <EditText
+	                     android:id="@+id/modelname"
+	                     android:layout_width="fill_parent"
+	                     android:layout_weight="1"
+	                     android:layout_height="wrap_content"
+	                     android:text="Model Name"></EditText>
+             </LinearLayout>
+             
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Model Year:"></TextView>
+            
+            <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+	             <EditText
+	                     android:id="@+id/modelyear"
+	                     android:layout_width="fill_parent"
+	                     android:layout_weight="1"
+	                     android:layout_height="wrap_content"
+	                     android:text="Model Year"></EditText>
              </LinearLayout>
             
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Model Price"></TextView>
+            
+            <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+	             <EditText
+	                     android:id="@+id/modelprice"
+	                     android:layout_width="fill_parent"
+	                     android:layout_weight="1"
+	                     android:layout_height="wrap_content"
+	                     android:text="Model Price"></EditText>
+             </LinearLayout>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Model Location"></TextView>
+            
+            <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+	             <EditText
+	                     android:id="@+id/location"
+	                     android:layout_width="fill_parent"
+	                     android:layout_weight="1"
+	                     android:layout_height="wrap_content"
+	                     android:text="Model location"></EditText>
+             </LinearLayout>
+            
+             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="target url:"></TextView>
+             
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+             <EditText
+                     android:id="@+id/targeturl"
+                     android:layout_width="fill_parent"
+                     android:layout_weight="1"
+                     android:layout_height="wrap_content"
+                     android:text="targeturl"></EditText>
+                 
+             </LinearLayout>
         </LinearLayout>
         
+        <Button 
+	                     android:id="@+id/update"
+	                     android:layout_width="wrap_content"
+	                     android:layout_height="wrap_content"
+	                     android:text="update"/>
         
     </LinearLayout>
 

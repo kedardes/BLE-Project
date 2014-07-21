@@ -17,4 +17,9 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="label_content" parent="@android:style/TextAppearance.Medium">
+         <item name="android:layout_width">150dp</item>
+         <item name="android:paddingLeft">10dp</item>
+         <item name="android:layout_height">wrap_content</item>t
+    </style>
 </resources>

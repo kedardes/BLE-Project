@@ -46,6 +46,18 @@ public class AllDemosActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		
+		findViewById(R.id.models_demo_button).setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(AllDemosActivity.this,ListModels.class);
+				intent.putExtra(ListModels.EXTRAS_TARGET_ACTIVITY, ModelDetails.class.getName());
+				startActivity(intent);
+			}
+		});
 	}
 
 	@Override

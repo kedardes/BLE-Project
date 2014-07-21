@@ -24,7 +24,6 @@ public class DistanceBeaconActivity extends Activity {
 	private static final double RELATIVE_START_POS = 320/1110.0;
 	private static final double RELATIVE_STOP_POS = 885.0/1110.0;
 	
-	
 	private BeaconManager beaconManager;
 	private Beacon beacon;
 	private Region region;
@@ -32,8 +31,6 @@ public class DistanceBeaconActivity extends Activity {
 	private View dotView;
 	private int startY = -1;
 	private int segmentLength = -1;
-	
-	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,10 +78,9 @@ public class DistanceBeaconActivity extends Activity {
 		final View view = findViewById(R.id.sonar);
 		view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 			
-			@SuppressWarnings("deprecation")
 			@Override
 			public void onGlobalLayout() {
-				view.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+				view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 				startY = (int)(RELATIVE_START_POS * view.getMeasuredHeight());
 				int stopY = (int)(RELATIVE_STOP_POS * view.getMeasuredHeight());
 				segmentLength = stopY = startY;
@@ -102,15 +98,14 @@ public class DistanceBeaconActivity extends Activity {
 		dotView.animate().translationY(computeDotPosY(beacon)).start();
 	}
 	
-	 private int computeDotPosY(Beacon beacon) {
+	private int computeDotPosY(Beacon beacon) {
 		    // Let's put dot at the end of the scale when it's further than 6m.
 		    double distance = Math.min(Utils.computeAccuracy(beacon), 6.0);
 		    return startY + (int) (segmentLength * (distance / 6.0));
 		  }
 	 
-	 
 	 @Override
-	  public boolean onOptionsItemSelected(MenuItem item) {
+	public boolean onOptionsItemSelected(MenuItem item) {
 	    if (item.getItemId() == android.R.id.home) {
 	      finish();
 	      return true;

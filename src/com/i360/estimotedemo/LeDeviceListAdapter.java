@@ -2,10 +2,13 @@ package com.i360.estimotedemo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import com.estimote.sdk.Beacon;
 import com.estimote.sdk.Utils;
+import com.i360.estimotedemo.model.beaconLink;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +20,11 @@ public class LeDeviceListAdapter extends BaseAdapter {
 
 	private ArrayList<Beacon> beacons;
 	private LayoutInflater inflater;
+	private ArrayList<beaconLink> beaconlinks;
 	
-	public LeDeviceListAdapter(Context context)
+	public LeDeviceListAdapter(Context context, ArrayList<beaconLink> beaconlinks)
 	{
+		this.beaconlinks = beaconlinks;
 		this.inflater = LayoutInflater.from(context);
 		this.beacons = new ArrayList<Beacon>();
 	}
@@ -65,6 +70,22 @@ public class LeDeviceListAdapter extends BaseAdapter {
 		holder.minorTextView.setText("Minor: " + beacon.getMinor());
 		holder.measuredPowerTextView.setText("MPower: " + beacon.getMeasuredPower());
 		holder.rssiTextView.setText("RSSI: " + beacon.getRssi());
+		
+		beaconLink beaconLocal = null;
+		for (beaconLink _beaconlocal:beaconlinks) {
+			if (_beaconlocal.getMinor().equals(String.valueOf(beacon.getMinor()))) {
+				beaconLocal = _beaconlocal;
+				break;
+			}
+		}
+		if (beaconLocal != null) {
+			holder.modelImageView.setText("Image : " + beaconLocal.getModelImage());
+			holder.modelNameView.setText("ModelName : " + beaconLocal.getModelName());
+			holder.modelYearView.setText("Model Year : " + beaconLocal.getModelYear());
+			holder.modelPriceView.setText("Price : " + beaconLocal.getModelPrice());
+			holder.modelLocationView.setText("Location" + beaconLocal.getModelLocation());
+			holder.targeturlView.setText("TargetURl :" + beaconLocal.getTargetUrl());
+		}
 	}
 
 	private View inflateIfRequired(View view, int position, ViewGroup parent) {
@@ -79,7 +100,6 @@ public class LeDeviceListAdapter extends BaseAdapter {
 		return view;
 	}
 	
-	
 	static class ViewHolder {
 		final TextView macTextView;
 		final TextView majorTextView;
@@ -87,12 +107,29 @@ public class LeDeviceListAdapter extends BaseAdapter {
 		final TextView measuredPowerTextView;
 		final TextView rssiTextView;
 		
+		final TextView modelImageView;
+		final TextView modelNameView;
+		final TextView modelYearView;
+		final TextView modelPriceView;
+		final TextView modelLocationView;
+		final TextView targeturlView;
+		
 		ViewHolder(View view) {
 			  macTextView = (TextView) view.findViewWithTag("mac");
 			  majorTextView = (TextView) view.findViewWithTag("major");
 			  minorTextView = (TextView) view.findViewWithTag("minor");
 			  measuredPowerTextView = (TextView) view.findViewWithTag("mpower");
 			  rssiTextView = (TextView) view.findViewWithTag("rssi");
+			  
+			  modelImageView = (TextView) view.findViewWithTag("modelimage");
+			  modelNameView = (TextView) view.findViewWithTag("modelname");
+			  modelYearView = (TextView) view.findViewWithTag("modelyear");
+			  modelPriceView = (TextView) view.findViewWithTag("modelprice");
+			  modelLocationView = (TextView) view.findViewWithTag("modellocation");
+			  
+			  targeturlView = (TextView) view.findViewWithTag("targeturl");
+			  
+			  
 		      
 		}
 	}

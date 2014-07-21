@@ -24,25 +24,35 @@ public final class R {
     public static final class drawable {
         public static final int beacon_gray=0x7f020000;
         public static final int bg_distance=0x7f020001;
-        public static final int dot=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
+        public static final int border=0x7f020002;
+        public static final int camry=0x7f020003;
+        public static final int dot=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000d;
-        public static final int after_connected=0x7f080005;
-        public static final int beacon_details=0x7f080004;
+        public static final int action_settings=0x7f080015;
+        public static final int after_connected=0x7f080006;
+        public static final int beacon_details=0x7f080005;
         public static final int characterstics_demo_button=0x7f080002;
-        public static final int device_list=0x7f08000b;
+        public static final int device_list=0x7f080013;
         public static final int distance_demo_button=0x7f080000;
-        public static final int dot=0x7f08000a;
-        public static final int menu_settings=0x7f08000c;
-        public static final int minor=0x7f080006;
+        public static final int dot=0x7f080011;
+        public static final int location=0x7f08000c;
+        public static final int menu_settings=0x7f080014;
+        public static final int minor=0x7f080007;
+        public static final int model_list=0x7f080012;
+        public static final int modelimage=0x7f080008;
+        public static final int modelname=0x7f080009;
+        public static final int modelprice=0x7f08000b;
+        public static final int models_demo_button=0x7f080003;
+        public static final int modelyear=0x7f08000a;
         public static final int notify_demo_button=0x7f080001;
-        public static final int refresh=0x7f08000e;
-        public static final int root=0x7f080008;
-        public static final int sonar=0x7f080009;
-        public static final int status=0x7f080003;
-        public static final int update=0x7f080007;
+        public static final int refresh=0x7f080016;
+        public static final int root=0x7f08000f;
+        public static final int sonar=0x7f080010;
+        public static final int status=0x7f080004;
+        public static final int targeturl=0x7f08000d;
+        public static final int update=0x7f08000e;
     }
     public static final class layout {
         public static final int actionbar_indeterminate_progress=0x7f030000;
@@ -51,16 +61,21 @@ public final class R {
         public static final int characteristics_demo=0x7f030003;
         public static final int device_item=0x7f030004;
         public static final int distance_view=0x7f030005;
-        public static final int main=0x7f030006;
-        public static final int notify_demo=0x7f030007;
+        public static final int list_models=0x7f030006;
+        public static final int main=0x7f030007;
+        public static final int model_details=0x7f030008;
+        public static final int model_item=0x7f030009;
+        public static final int notify_demo=0x7f03000a;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
         public static final int all_demos=0x7f070001;
         public static final int characteristics_demo=0x7f070002;
         public static final int distance_view=0x7f070003;
-        public static final int notify_demo=0x7f070004;
-        public static final int scan_menu=0x7f070005;
+        public static final int list_models=0x7f070004;
+        public static final int model_details=0x7f070005;
+        public static final int notify_demo=0x7f070006;
+        public static final int scan_menu=0x7f070007;
     }
     public static final class string {
         public static final int action_settings=0x7f050007;
@@ -71,6 +86,8 @@ public final class R {
         public static final int title_activity_characteristics_demo=0x7f050008;
         public static final int title_activity_distance_beacon=0x7f050005;
         public static final int title_activity_list_beacons=0x7f050004;
+        public static final int title_activity_list_models=0x7f050009;
+        public static final int title_activity_model_details=0x7f05000a;
         public static final int title_activity_notify_demo=0x7f050006;
     }
     public static final class style {
@@ -100,5 +117,6 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f060001;
+        public static final int label_content=0x7f060002;
     }
 }

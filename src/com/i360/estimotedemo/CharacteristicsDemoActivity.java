@@ -4,6 +4,7 @@ import com.estimote.sdk.Beacon;
 import com.estimote.sdk.connection.BeaconConnection;
 import com.estimote.sdk.connection.BeaconConnection.BeaconCharacteristics;
 import com.estimote.sdk.connection.BeaconConnection.ConnectionCallback;
+import com.i360.estimotedemo.model.beaconLink;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,28 +20,41 @@ public class CharacteristicsDemoActivity extends Activity {
 
 	private Beacon beacon;
 	private BeaconConnection connection;
-	
+	private EstimoteDemoApp myapp; 
 	private TextView statusView;
 	private TextView beaconDetailsView;
 	private EditText minorEditView;
+	private EditText modelImageEditView;
+	private EditText modelNameEditView;
+	private EditText modelYearEditView;
+	private EditText modelPriceEditView;
+	private EditText modelLocationEditView;
+	private EditText targetUrlEditView;
 	private View afterConnectedView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		myapp = (EstimoteDemoApp) getApplication();
 		setContentView(R.layout.characteristics_demo);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		statusView = (TextView) findViewById(R.id.status);
+		
 		beaconDetailsView = (TextView) findViewById(R.id.beacon_details);
 		afterConnectedView = findViewById(R.id.after_connected);
 		minorEditView = (EditText) findViewById(R.id.minor);
+		modelImageEditView = (EditText) findViewById(R.id.modelimage);
+		modelNameEditView = (EditText) findViewById(R.id.modelname);
+		modelYearEditView = (EditText) findViewById(R.id.modelyear);
+		modelPriceEditView = (EditText) findViewById(R.id.modelprice);
+		modelLocationEditView = (EditText) findViewById(R.id.location);
 		
+		targetUrlEditView = (EditText) findViewById(R.id.targeturl);
 		
 		beacon = getIntent().getParcelableExtra(ListBeaconsActivity.EXTRAS_BEACON);
 		connection = new BeaconConnection(this, beacon, createConnectionCallback());
 		findViewById(R.id.update).setOnClickListener(createUpdateButtonListener());
-		
 		
 	}
 
@@ -60,7 +74,6 @@ public class CharacteristicsDemoActivity extends Activity {
 		super.onDestroy();
 	}
 	
-	
 	private OnClickListener createUpdateButtonListener() {
 		// TODO Auto-generated method stub
 		return new View.OnClickListener() {
@@ -68,17 +81,36 @@ public class CharacteristicsDemoActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				int minor = parseMinorFromEditView();
+				String modelImage = parseFieldFromEditView(modelImageEditView);
+				String modelName = parseFieldFromEditView(modelNameEditView);
+				String modelYear = parseFieldFromEditView(modelYearEditView);
+				String modelPrice = parseFieldFromEditView(modelPriceEditView);
+				String modelLocation = parseFieldFromEditView(modelLocationEditView);
+				String targeturl = parseFieldFromEditView(targetUrlEditView);
 				if (minor == -1) {
 					showToast("Minor must be a number");
 				}
 				else {
 					updateMinor(minor);
+					updatelocaldb(minor,modelImage,modelName, modelYear, modelPrice, modelLocation, targeturl);
 				}
 				
 			}
 		};
 	}
 
+	private void updatelocaldb(int minor, String modelImage, String modelName, String modelYear, String modelPrice, String modelLocation, String targetURL) {
+		// TODO Auto-generated method stub
+		beaconLink beacon = new beaconLink();
+		beacon.setMinor(String.valueOf(minor));
+		beacon.setModelName(modelName);
+		beacon.setModelImage(modelImage);
+		beacon.setModelYear(modelYear);
+		beacon.setModelPrice(modelPrice);
+		beacon.setModelLocation(modelLocation);
+		beacon.setTargetUrl(targetURL);
+		myapp.getDataManager().SaveBeacon(beacon);
+	}
 	
 	private void updateMinor(int minor) {
 		connection.writeMinor(minor, new BeaconConnection.WriteCallback() {
@@ -111,6 +143,15 @@ public class CharacteristicsDemoActivity extends Activity {
 				});
 			}
 		});
+	}
+	
+	private String parseFieldFromEditView(EditText view) {
+		try {
+			return String.valueOf(view.getText());
+		} catch(Exception e) {
+			return "";
+		}
+		
 	}
 	
 	private int parseMinorFromEditView() {
@@ -172,6 +213,15 @@ public class CharacteristicsDemoActivity extends Activity {
 							.append("Battery: ").append(beaconChars.getBatteryPercent()).append(" %");
 						beaconDetailsView.setText(sb.toString());
 						minorEditView.setText(String.valueOf(beacon.getMinor()));
+						beaconLink beacon_local = myapp.getDataManager().findBeacon(String.valueOf(beacon.getMinor()));
+						if (beacon_local != null) {
+						    modelImageEditView.setText(beacon_local.getModelImage());
+						    modelNameEditView.setText(beacon_local.getModelName());
+						    modelYearEditView.setText(beacon_local.getModelYear());
+						    modelPriceEditView.setText(beacon_local.getModelPrice());
+						    modelLocationEditView.setText(beacon_local.getModelLocation());
+							targetUrlEditView.setText(beacon_local.getTargetUrl());
+						}
 						afterConnectedView.setVisibility(View.VISIBLE);
 					}});
 			}

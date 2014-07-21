@@ -1,12 +1,15 @@
 package com.i360.estimotedemo;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import com.estimote.sdk.Beacon;
 import com.estimote.sdk.BeaconManager;
 import com.estimote.sdk.Region;
 import com.estimote.sdk.utils.L;
+import com.i360.estimotedemo.model.beaconLink;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -36,15 +39,20 @@ public class ListBeaconsActivity extends Activity {
 	
 	private BeaconManager beaconManager;
 	private LeDeviceListAdapter adapter;
-	
+	private EstimoteDemoApp myapp;
+	private ArrayList<beaconLink> beaconList;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		myapp = (EstimoteDemoApp) getApplication();
 		
-		adapter = new LeDeviceListAdapter(this);
+		beaconList = (ArrayList<beaconLink>) myapp.getDataManager().getBeacons();
+		Log.i(TAG, "Retrieved " + beaconList.size() + " beacons from localdatabase");
+		adapter = new LeDeviceListAdapter(this,beaconList);
+		//adapter = new LeDeviceListAdapter(this);
 		ListView list = (ListView) findViewById(R.id.device_list);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(createOnClickListener());
@@ -52,6 +60,7 @@ public class ListBeaconsActivity extends Activity {
 		L.enableDebugLogging(true);
 		
 		beaconManager = new BeaconManager(this);
+		beaconManager.setBackgroundScanPeriod(TimeUnit.SECONDS.toMillis(2000), 0);
 		beaconManager.setRangingListener(new BeaconManager.RangingListener() {
 			@Override
 			public void onBeaconsDiscovered(Region region, final List<Beacon> beacons) {
@@ -67,7 +76,6 @@ public class ListBeaconsActivity extends Activity {
 				});
 			}
 		});
-		
 	}
 
 	private AdapterView.OnItemClickListener createOnClickListener() {
